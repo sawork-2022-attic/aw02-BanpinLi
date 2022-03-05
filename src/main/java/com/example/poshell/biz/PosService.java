@@ -18,6 +18,10 @@ public interface PosService {
 
     public boolean add(String productId, int amount);
 
+    public boolean modify(String productId, int amount);
+
+    boolean remove(String productId);
+
 
     public List<Product> products();
 }

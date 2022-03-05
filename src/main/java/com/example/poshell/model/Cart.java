@@ -14,6 +14,33 @@ public class Cart {
         return items.add(item);
     }
 
+    public boolean changeItem(Item item) {
+        for(Item i : items) {
+            if(i.getProduct().equals(item.getProduct())) {
+                i.setAmount(item.getAmount());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeItem(Item item) {
+        int target = -1;
+        for(int i = 0;i < items.size();i++) {
+            Item it = items.get(i);
+            if(it.getProduct().getId().equals(item.getProduct().getId())) {
+                it.getProduct().setId(item.getProduct().getId());
+                target = i;
+            }
+        }
+        if(target != -1) {
+            items.remove(target);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         if (items.size() ==0){
